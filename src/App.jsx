@@ -44,34 +44,52 @@ const logs = [
   },
 ];
 
-const timeline = [
+const timelineEntries = [
   {
-    id: "messages",
-    date: "2025-04-01",
-    title: "First messages",
-    blurb: "Memes, late replies, and a suspicious number of exclamation points.",
-    photo: "/images/timeline/first-messages.jpg",
+    id: "display-velvet-taco",
+    title: "Velvet Taco",
+    detail: "The opening chapter.",
   },
   {
-    id: "coffee",
-    date: "2025-05-04",
-    title: "First coffee date",
-    blurb: "Iced lattes, no plan, somehow everything to say.",
-    photo: "/images/timeline/first-date.jpg",
+    id: "display-asia",
+    title: "ESBEN LEFT FOR ASIA",
+    detail: "The dramatic long-distance stretch.",
   },
   {
-    id: "rain",
-    date: "2025-06-10",
-    title: "Rain walk",
-    blurb: "Shared earbuds + puddle jumping.",
+    id: "display-return",
+    title: "ESBEN IS BACK",
+    detail: "Back where he belonged.",
   },
   {
-    id: "friends",
-    date: "2025-07-12",
-    title: "Met the friends",
-    blurb: "Stories, teasing, and you fitting in like you’ve always been there.",
+    id: "display-uno-ano",
+    title: "THE BIG UNO ANO",
+    detail: "The whole reason this site exists.",
   },
 ];
+
+const timelinePuzzleMoments = [
+  "Velvet Taco",
+  "Top Golf",
+  "Roadhouse Delivery",
+  "ESBEN LEFT FOR ASIA",
+  "ESBEN IS BACK",
+  "Esben moves to dallas",
+  "Vegas Trip",
+  "White Linen",
+  "First Aggie Football Game Together",
+  "Oktoberfest",
+  "Halloween",
+  "Office Christmas Party",
+  "Shootin Shotguns",
+  "VALENTINES DAY GURL",
+  "big zoo time",
+  "Getaway to oklahoma cabin",
+  "Johans grad party",
+  "THE BIG UNO ANO",
+].map((title, index) => ({
+  id: `timeline-puzzle-${index + 1}`,
+  title,
+}));
 
 const albums = [
   {
@@ -128,10 +146,19 @@ const puzzles = [
   {
     id: "crossword",
     type: "crossword",
-    prompt: "The logs and navigation are still jammed. Fill the mini crossword.",
+    prompt: "The logs and navigation are still jammed. Fill the crossword clues.",
     clues: [
-      { number: "1 Across", text: "What this page is full of", answer: "LOVE" },
-      { number: "1 Down", text: "Short letters and memories", answer: "LOGS" },
+      { key: "asia", number: 1, direction: "across", row: 0, col: 5, text: "esben went here before we became official", answer: "ASIA" },
+      { key: "jetski", number: 2, direction: "down", row: 0, col: 1, text: "what did we use on our water based adventure", answer: "JETSKI" },
+      { key: "anniversary", number: 3, direction: "down", row: 0, col: 5, text: "happy ______", answer: "ANNIVERSARY" },
+      { key: "lebron", number: 4, direction: "across", row: 1, col: 0, text: "the goat", answer: "LEBRON" },
+      { key: "karen", number: 5, direction: "down", row: 2, col: 8, text: "which one is so beautiful", answer: "KAREN" },
+      { key: "chipsandqueso", number: 6, direction: "across", row: 3, col: 3, text: "the first thing we ate together", answer: "CHIPSANDQUESO" },
+      { key: "esben", number: 7, direction: "down", row: 3, col: 13, text: "which one is so handome", answer: "ESBEN" },
+      { key: "perfect", number: 8, direction: "across", row: 5, col: 4, text: "what type of match are we", answer: "PERFECT" },
+      { key: "bale", number: 9, direction: "across", row: 5, col: 13, text: "best pho of all time", answer: "BALE" },
+      { key: "dallas", number: 10, direction: "across", row: 8, col: 4, text: "where did we tour apartments", answer: "DALLAS" },
+      { key: "love", number: 11, direction: "down", row: 8, col: 7, text: "what are we in", answer: "LOVE" },
     ],
     repair: "The logs and navigation stop drifting and lock into place.",
   },
@@ -140,27 +167,33 @@ const puzzles = [
     type: "reorder",
     prompt: "The timeline got shuffled. Put these moments back in order.",
     items: [
-      { id: "friends", label: "Met the friends" },
-      { id: "rain", label: "Rain walk" },
-      { id: "messages", label: "First messages" },
-      { id: "coffee", label: "First coffee date" },
+      { id: "timeline-puzzle-8", label: "White Linen" },
+      { id: "timeline-puzzle-12", label: "Office Christmas Party" },
+      { id: "timeline-puzzle-2", label: "Top Golf" },
+      { id: "timeline-puzzle-17", label: "Johans grad party" },
+      { id: "timeline-puzzle-5", label: "ESBEN IS BACK" },
+      { id: "timeline-puzzle-10", label: "Oktoberfest" },
+      { id: "timeline-puzzle-14", label: "VALENTINES DAY GURL" },
+      { id: "timeline-puzzle-1", label: "Velvet Taco" },
+      { id: "timeline-puzzle-9", label: "First Aggie Football Game Together" },
+      { id: "timeline-puzzle-16", label: "Getaway to oklahoma cabin" },
+      { id: "timeline-puzzle-6", label: "Esben moves to dallas" },
+      { id: "timeline-puzzle-3", label: "Roadhouse Delivery" },
+      { id: "timeline-puzzle-18", label: "THE BIG UNO ANO" },
+      { id: "timeline-puzzle-13", label: "Shootin Shotguns" },
+      { id: "timeline-puzzle-11", label: "Halloween" },
+      { id: "timeline-puzzle-7", label: "Vegas Trip" },
+      { id: "timeline-puzzle-15", label: "big zoo time" },
+      { id: "timeline-puzzle-4", label: "ESBEN LEFT FOR ASIA" },
     ],
-    answer: ["messages", "coffee", "rain", "friends"],
+    answer: timelinePuzzleMoments.map((item) => item.id),
     repair: "The timeline snaps back into chronological order.",
   },
   {
     id: "site-kit",
-    type: "multi",
-    prompt: "The last section needs the right ingredients. Pick the three things that belong here.",
-    choices: [
-      "Photos",
-      "Memories",
-      "Timeline",
-      "Quarterly report",
-      "Bug backlog",
-      "Expense sheet",
-    ],
-    answer: ["Photos", "Memories", "Timeline"],
+    type: "wordle",
+    prompt: "The last section needs one final word. Solve the Wordle.",
+    answer: "LOVES",
     repair: "The gallery, about section, and final unlock come back online.",
   },
 ];
@@ -171,6 +204,28 @@ const FINAL_MESSAGE =
 
 const normalizeAnswer = (value) =>
   value.toLowerCase().trim().replace(/[^a-z0-9]+/g, " ");
+
+const getCrosswordCells = (clues) => {
+  const cells = {};
+
+  clues.forEach((clue) => {
+    clue.answer.split("").forEach((_, index) => {
+      const row = clue.row + (clue.direction === "down" ? index : 0);
+      const col = clue.col + (clue.direction === "across" ? index : 0);
+      const key = `${row}-${col}`;
+
+      if (!cells[key]) {
+        cells[key] = { row, col, starts: [] };
+      }
+
+      if (index === 0) {
+        cells[key].starts.push(clue.number);
+      }
+    });
+  });
+
+  return cells;
+};
 
 const makeAnswerState = () =>
   Object.fromEntries(
@@ -185,15 +240,9 @@ const makeAnswerState = () =>
       if (puzzle.type === "crossword") {
         return [
           puzzle.id,
-          {
-            top0: "",
-            top1: "",
-            top2: "",
-            top3: "",
-            left1: "",
-            left2: "",
-            left3: "",
-          },
+          Object.fromEntries(
+            Object.keys(getCrosswordCells(puzzle.clues)).map((cellKey) => [cellKey, ""]),
+          ),
         ];
       }
 
@@ -201,8 +250,14 @@ const makeAnswerState = () =>
         return [puzzle.id, puzzle.items.map((item) => item.id)];
       }
 
-      if (puzzle.type === "multi") {
-        return [puzzle.id, []];
+      if (puzzle.type === "wordle") {
+        return [
+          puzzle.id,
+          {
+            currentGuess: "",
+            guesses: [],
+          },
+        ];
       }
 
       return [puzzle.id, ""];
@@ -226,16 +281,60 @@ const readSavedPuzzleProgress = () => {
     if (!saved) return fallback;
 
     const parsed = JSON.parse(saved);
+    const safeAnswers = { ...fallback.answers };
+    const safeStatuses = { ...fallback.statuses };
+
+    puzzles.forEach((puzzle) => {
+      const savedAnswer = parsed.answers?.[puzzle.id];
+      const savedStatus = parsed.statuses?.[puzzle.id];
+
+      if (typeof savedStatus === "boolean") {
+        safeStatuses[puzzle.id] = savedStatus;
+      }
+
+      if (puzzle.type === "bundle" && savedAnswer && typeof savedAnswer === "object") {
+        safeAnswers[puzzle.id] = {
+          ...fallback.answers[puzzle.id],
+          ...savedAnswer,
+        };
+      }
+
+      if (puzzle.type === "crossword" && savedAnswer && typeof savedAnswer === "object") {
+        safeAnswers[puzzle.id] = {
+          ...fallback.answers[puzzle.id],
+          ...savedAnswer,
+        };
+      }
+
+      if (puzzle.type === "reorder" && Array.isArray(savedAnswer)) {
+        const validIds = new Set(puzzle.items.map((item) => item.id));
+        const sameIds =
+          savedAnswer.length === puzzle.items.length &&
+          savedAnswer.every((itemId) => validIds.has(itemId));
+
+        safeAnswers[puzzle.id] = sameIds ? savedAnswer : fallback.answers[puzzle.id];
+      }
+
+      if (
+        puzzle.type === "wordle" &&
+        savedAnswer &&
+        typeof savedAnswer === "object" &&
+        Array.isArray(savedAnswer.guesses) &&
+        typeof savedAnswer.currentGuess === "string"
+      ) {
+        safeAnswers[puzzle.id] = {
+          currentGuess: savedAnswer.currentGuess.slice(0, 5).toUpperCase(),
+          guesses: savedAnswer.guesses
+            .filter((guess) => typeof guess === "string")
+            .map((guess) => guess.slice(0, 5).toUpperCase())
+            .slice(0, 6),
+        };
+      }
+    });
 
     return {
-      answers: {
-        ...fallback.answers,
-        ...(parsed.answers ?? {}),
-      },
-      statuses: {
-        ...fallback.statuses,
-        ...(parsed.statuses ?? {}),
-      },
+      answers: safeAnswers,
+      statuses: safeStatuses,
     };
   } catch {
     return fallback;
@@ -493,106 +592,120 @@ const BundlePuzzle = ({ puzzle, value, onChange, onSubmit, solved }) => (
   </div>
 );
 
-const CrosswordCell = ({ value, onChange, className = "", label, disabled }) => (
-  <input
-    aria-label={label}
-    maxLength={1}
-    value={value}
-    onChange={onChange}
-    disabled={disabled}
-    className={`h-11 w-11 rounded-xl border border-neutral-300 bg-white text-center text-lg font-semibold uppercase text-neutral-900 outline-none transition focus:border-neutral-900 ${className}`}
-  />
-);
+const CrosswordPuzzle = ({ value, onChange, onSubmit, solved, puzzle }) => {
+  const cells = getCrosswordCells(puzzle.clues);
+  const maxRow = Math.max(...Object.values(cells).map((cell) => cell.row));
+  const maxCol = Math.max(...Object.values(cells).map((cell) => cell.col));
+  const acrossClues = puzzle.clues.filter((clue) => clue.direction === "across");
+  const downClues = puzzle.clues.filter((clue) => clue.direction === "down");
 
-const CrosswordPuzzle = ({ value, onChange, onSubmit, solved, puzzle }) => (
-  <div className="mt-4">
-    <div className="grid gap-6 lg:grid-cols-[auto,1fr]">
-      <div className="relative grid w-max grid-cols-4 gap-2 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
-        <span className="absolute left-6 top-5 text-[10px] font-semibold text-neutral-400">1</span>
-        <CrosswordCell
-          value={value.top0}
-          onChange={(event) => onChange(puzzle.id, "top0", event.target.value)}
-          label="Crossword shared cell"
-          disabled={solved}
-          className="pl-3"
-        />
-        <CrosswordCell
-          value={value.top1}
-          onChange={(event) => onChange(puzzle.id, "top1", event.target.value)}
-          label="Crossword top row cell 2"
-          disabled={solved}
-        />
-        <CrosswordCell
-          value={value.top2}
-          onChange={(event) => onChange(puzzle.id, "top2", event.target.value)}
-          label="Crossword top row cell 3"
-          disabled={solved}
-        />
-        <CrosswordCell
-          value={value.top3}
-          onChange={(event) => onChange(puzzle.id, "top3", event.target.value)}
-          label="Crossword top row cell 4"
-          disabled={solved}
-        />
-        <CrosswordCell
-          value={value.left1}
-          onChange={(event) => onChange(puzzle.id, "left1", event.target.value)}
-          label="Crossword left column cell 2"
-          disabled={solved}
-        />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <CrosswordCell
-          value={value.left2}
-          onChange={(event) => onChange(puzzle.id, "left2", event.target.value)}
-          label="Crossword left column cell 3"
-          disabled={solved}
-        />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <CrosswordCell
-          value={value.left3}
-          onChange={(event) => onChange(puzzle.id, "left3", event.target.value)}
-          label="Crossword left column cell 4"
-          disabled={solved}
-        />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
-        <div className="h-11 w-11 rounded-xl bg-neutral-200/70" />
+  return (
+    <div className="mt-4 space-y-4">
+      <div className="overflow-x-auto rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+        <div
+          className="grid gap-1"
+          style={{ gridTemplateColumns: `repeat(${maxCol + 1}, minmax(0, 2.25rem))` }}
+        >
+          {Array.from({ length: (maxRow + 1) * (maxCol + 1) }, (_, index) => {
+            const row = Math.floor(index / (maxCol + 1));
+            const col = index % (maxCol + 1);
+            const key = `${row}-${col}`;
+            const cell = cells[key];
+
+            if (!cell) {
+              return <div key={key} className="h-9 w-9 rounded-lg bg-neutral-200/70" />;
+            }
+
+            return (
+              <div key={key} className="relative">
+                {cell.starts.length ? (
+                  <span className="pointer-events-none absolute left-1 top-0.5 text-[9px] font-semibold text-neutral-400">
+                    {cell.starts[0]}
+                  </span>
+                ) : null}
+                <input
+                  maxLength={1}
+                  value={value[key] ?? ""}
+                  onChange={(event) => onChange(puzzle.id, key, event.target.value)}
+                  disabled={solved}
+                  className="h-9 w-9 rounded-lg border border-neutral-300 bg-white pl-3 text-center text-sm font-semibold uppercase text-neutral-900 outline-none transition focus:border-neutral-900"
+                  aria-label={`Crossword row ${row + 1} col ${col + 1}`}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <div className="space-y-3 text-sm text-neutral-700">
-        {puzzle.clues.map((clue) => (
-          <div key={clue.number} className="rounded-2xl border border-neutral-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
-              {clue.number}
-            </p>
-            <p className="mt-2">{clue.text}</p>
-          </div>
-        ))}
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
+            Across
+          </p>
+          {acrossClues.map((clue) => (
+            <div key={clue.key} className="rounded-2xl border border-neutral-200 bg-white p-4 text-sm text-neutral-700">
+              <span className="font-semibold text-neutral-900">{clue.number} across:</span> {clue.text}
+            </div>
+          ))}
+        </div>
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
+            Down
+          </p>
+          {downClues.map((clue) => (
+            <div key={clue.key} className="rounded-2xl border border-neutral-200 bg-white p-4 text-sm text-neutral-700">
+              <span className="font-semibold text-neutral-900">{clue.number} down:</span> {clue.text}
+            </div>
+          ))}
+        </div>
       </div>
+
+      <button
+        type="button"
+        onClick={() => onSubmit(puzzle.id)}
+        disabled={solved}
+        className="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700 disabled:cursor-default disabled:bg-neutral-300"
+      >
+        {solved ? "Solved" : "Check crossword"}
+      </button>
     </div>
-    <button
-      type="button"
-      onClick={() => onSubmit(puzzle.id)}
-      disabled={solved}
-      className="mt-4 rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700 disabled:cursor-default disabled:bg-neutral-300"
-    >
-      {solved ? "Solved" : "Check crossword"}
-    </button>
-  </div>
-);
+  );
+};
 
-const ReorderPuzzle = ({ puzzle, value, onMove, onSubmit, solved }) => (
+const ReorderPuzzle = ({ puzzle, value, onDropItem, onSubmit, onHint, hintActive, solved }) => (
   <div className="mt-4 space-y-3">
     {value.map((itemId, index) => {
       const item = puzzle.items.find((entry) => entry.id === itemId);
+      const isCorrect = puzzle.answer[index] === itemId;
+
+      if (!item) {
+        return null;
+      }
 
       return (
         <div
           key={itemId}
-          className="flex items-center justify-between gap-3 rounded-2xl border border-neutral-200 bg-white p-4"
+          draggable={!solved}
+          onDragStart={(event) => {
+            event.dataTransfer.effectAllowed = "move";
+            event.dataTransfer.setData("text/plain", itemId);
+          }}
+          onDragOver={(event) => {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "move";
+          }}
+          onDrop={(event) => {
+            event.preventDefault();
+            const draggedItemId = event.dataTransfer.getData("text/plain");
+            onDropItem(puzzle.id, draggedItemId, index);
+          }}
+          className={`flex items-center justify-between gap-3 rounded-2xl border bg-white p-4 transition ${
+            hintActive
+              ? isCorrect
+                ? "border-emerald-400 bg-emerald-50"
+                : "border-rose-400 bg-rose-50"
+              : "border-neutral-200"
+          }`}
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
@@ -600,23 +713,8 @@ const ReorderPuzzle = ({ puzzle, value, onMove, onSubmit, solved }) => (
             </p>
             <p className="mt-1 text-sm font-medium text-neutral-900">{item.label}</p>
           </div>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => onMove(puzzle.id, index, -1)}
-              disabled={solved || index === 0}
-              className="grid h-9 w-9 place-items-center rounded-full border border-neutral-300 text-neutral-700 transition hover:bg-neutral-100 disabled:opacity-35"
-            >
-              ↑
-            </button>
-            <button
-              type="button"
-              onClick={() => onMove(puzzle.id, index, 1)}
-              disabled={solved || index === value.length - 1}
-              className="grid h-9 w-9 place-items-center rounded-full border border-neutral-300 text-neutral-700 transition hover:bg-neutral-100 disabled:opacity-35"
-            >
-              ↓
-            </button>
+          <div className="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            drag
           </div>
         </div>
       );
@@ -629,42 +727,103 @@ const ReorderPuzzle = ({ puzzle, value, onMove, onSubmit, solved }) => (
     >
       {solved ? "Solved" : "Lock order"}
     </button>
+    {!solved ? (
+      <button
+        type="button"
+        onClick={() => onHint(puzzle.id)}
+        className="ml-3 rounded-full border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100"
+      >
+        Hint
+      </button>
+    ) : null}
   </div>
 );
 
-const MultiPuzzle = ({ puzzle, value, onToggle, onSubmit, solved }) => (
-  <div className="mt-4 space-y-3">
-    <div className="grid gap-3 sm:grid-cols-2">
-      {puzzle.choices.map((choice) => {
-        const active = value.includes(choice);
+const getWordleLetterState = (guess, answer) => {
+  const result = Array(guess.length).fill("absent");
+  const remaining = answer.split("");
 
-        return (
-          <button
-            key={choice}
-            type="button"
-            onClick={() => onToggle(puzzle.id, choice)}
-            disabled={solved}
-            className={`rounded-2xl border p-4 text-left text-sm font-medium transition ${
-              active
-                ? "border-neutral-900 bg-neutral-900 text-white"
-                : "border-neutral-200 bg-white text-neutral-800 hover:-translate-y-0.5"
-            } ${solved ? "cursor-default" : ""}`}
-          >
-            {choice}
-          </button>
-        );
-      })}
+  guess.split("").forEach((letter, index) => {
+    if (answer[index] === letter) {
+      result[index] = "correct";
+      remaining[index] = null;
+    }
+  });
+
+  guess.split("").forEach((letter, index) => {
+    if (result[index] === "correct") return;
+    const remainingIndex = remaining.indexOf(letter);
+    if (remainingIndex !== -1) {
+      result[index] = "present";
+      remaining[remainingIndex] = null;
+    }
+  });
+
+  return result;
+};
+
+const WordlePuzzle = ({ puzzle, value, onChange, onSubmit, solved }) => {
+  const rows = Array.from({ length: 6 }, (_, index) => {
+    if (index < value.guesses.length) return value.guesses[index];
+    if (index === value.guesses.length) return value.currentGuess;
+    return "";
+  });
+
+  return (
+    <div className="mt-4 space-y-4">
+      <div className="space-y-2">
+        {rows.map((row, rowIndex) => {
+          const states =
+            row.length === 5 && rowIndex < value.guesses.length
+              ? getWordleLetterState(row, puzzle.answer)
+              : Array(5).fill("empty");
+
+          return (
+            <div key={rowIndex} className="flex gap-2">
+              {Array.from({ length: 5 }, (_, colIndex) => {
+                const letter = row[colIndex] ?? "";
+                const state = states[colIndex];
+                const stateClass =
+                  state === "correct"
+                    ? "border-emerald-500 bg-emerald-500 text-white"
+                    : state === "present"
+                      ? "border-amber-400 bg-amber-400 text-white"
+                      : state === "absent"
+                        ? "border-neutral-400 bg-neutral-400 text-white"
+                        : "border-neutral-300 bg-white text-neutral-900";
+
+                return (
+                  <div
+                    key={colIndex}
+                    className={`grid h-12 w-12 place-items-center rounded-xl border text-lg font-semibold uppercase ${stateClass}`}
+                  >
+                    {letter}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      <input
+        value={value.currentGuess}
+        onChange={(event) => onChange(puzzle.id, event.target.value)}
+        disabled={solved || value.guesses.length >= 6}
+        maxLength={5}
+        className="w-full rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-center text-lg font-semibold uppercase tracking-[0.3em] text-neutral-900 outline-none transition focus:border-neutral-900"
+        placeholder="_____"
+      />
+      <button
+        type="button"
+        onClick={() => onSubmit(puzzle.id)}
+        disabled={solved || value.guesses.length >= 6}
+        className="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700 disabled:cursor-default disabled:bg-neutral-300"
+      >
+        {solved ? "Solved" : value.guesses.length >= 6 ? "No attempts left" : "Guess"}
+      </button>
     </div>
-    <button
-      type="button"
-      onClick={() => onSubmit(puzzle.id)}
-      disabled={solved}
-      className="rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700 disabled:cursor-default disabled:bg-neutral-300"
-    >
-      {solved ? "Solved" : "Repair"}
-    </button>
-  </div>
-);
+  );
+};
 
 const PuzzlePanel = ({
   isOpen,
@@ -675,10 +834,12 @@ const PuzzlePanel = ({
   onBundleSubmit,
   onCrosswordChange,
   onCrosswordSubmit,
-  onReorderMove,
+  onReorderDrop,
   onReorderSubmit,
-  onMultiToggle,
-  onMultiSubmit,
+  onReorderHint,
+  reorderHintActive,
+  onWordleChange,
+  onWordleSubmit,
   onClose,
 }) => {
   if (!isOpen) return null;
@@ -799,18 +960,20 @@ const PuzzlePanel = ({
                     <ReorderPuzzle
                       puzzle={puzzle}
                       value={answers[puzzle.id]}
-                      onMove={onReorderMove}
+                      onDropItem={onReorderDrop}
                       onSubmit={onReorderSubmit}
+                      onHint={onReorderHint}
+                      hintActive={reorderHintActive}
                       solved={solved}
                     />
                   ) : null}
 
-                  {unlocked && puzzle.type === "multi" ? (
-                    <MultiPuzzle
+                  {unlocked && puzzle.type === "wordle" ? (
+                    <WordlePuzzle
                       puzzle={puzzle}
                       value={answers[puzzle.id]}
-                      onToggle={onMultiToggle}
-                      onSubmit={onMultiSubmit}
+                      onChange={onWordleChange}
+                      onSubmit={onWordleSubmit}
                       solved={solved}
                     />
                   ) : null}
@@ -902,7 +1065,7 @@ const Timeline = ({ solvedCount }) => {
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-px bg-neutral-200 sm:left-1/2" />
         <div className="space-y-8">
-          {timeline.map((item, index) => (
+          {timelineEntries.map((item, index) => (
             <div key={item.id} className="relative sm:grid sm:grid-cols-2 sm:gap-8">
               <div className="absolute left-4 mt-2 h-3.5 w-3.5 -ml-[7px] rounded-full bg-black sm:left-1/2" />
               <div
@@ -918,19 +1081,14 @@ const Timeline = ({ solvedCount }) => {
               >
                 <Card className={fixed ? "" : "border-dashed"}>
                   <div className="flex items-center justify-between text-xs text-neutral-600">
-                    <span>{fixed ? item.date : "20??-??-??"}</span>
+                    <span>memory {index + 1}</span>
                     <span>{fixed ? item.title : scrambleText(item.title)}</span>
                   </div>
                   <p className="mt-2 text-sm text-neutral-800">
-                    {fixed ? item.blurb : scrambleText(item.blurb)}
+                    {fixed
+                      ? `Part ${index + 1} of the year.`
+                      : scrambleText(`Part ${index + 1} of the year.`)}
                   </p>
-                  <div className="mt-3">
-                    <PlacePhoto
-                      src={item.photo}
-                      alt={item.title}
-                      className={fixed ? "" : "grayscale contrast-75"}
-                    />
-                  </div>
                 </Card>
               </div>
               <div className={index % 2 === 0 ? "sm:order-2" : ""} />
@@ -1063,12 +1221,23 @@ const FinalPage = ({ onBack }) => (
   </div>
 );
 
+const ResetProgressButton = ({ onReset }) => (
+  <button
+    type="button"
+    onClick={onReset}
+    className="fixed bottom-4 right-4 z-40 rounded-full border border-neutral-300 bg-white/90 px-3 py-1.5 text-xs text-neutral-500 shadow-sm backdrop-blur transition hover:border-neutral-500 hover:text-neutral-800"
+  >
+    reset progress
+  </button>
+);
+
 export default function AnniversarySite() {
   const initialState = readSavedPuzzleProgress();
   const [view, setView] = useState("site");
   const [isPuzzleOpen, setIsPuzzleOpen] = useState(false);
   const [answers, setAnswers] = useState(initialState.answers);
   const [statuses, setStatuses] = useState(initialState.statuses);
+  const [reorderHintActive, setReorderHintActive] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -1165,23 +1334,35 @@ export default function AnniversarySite() {
   };
 
   const handleCrosswordSubmit = (id) => {
-    const current = answers[id];
-    const across = `${current.top0}${current.top1}${current.top2}${current.top3}`;
-    const down = `${current.top0}${current.left1}${current.left2}${current.left3}`;
+    const puzzle = puzzles.find((entry) => entry.id === id);
 
-    if (across === "LOVE" && down === "LOGS") {
+    if (!puzzle || puzzle.type !== "crossword") return;
+
+    const isCorrect = puzzle.clues.every(
+      (clue) =>
+        clue.answer.split("").every((letter, index) => {
+          const row = clue.row + (clue.direction === "down" ? index : 0);
+          const col = clue.col + (clue.direction === "across" ? index : 0);
+          const key = `${row}-${col}`;
+
+          return (answers[id][key] ?? "").toUpperCase() === letter;
+        }),
+    );
+
+    if (isCorrect) {
       markSolved(id);
     }
   };
 
-  const handleReorderMove = (id, index, direction) => {
+  const handleReorderDrop = (id, draggedItemId, targetIndex) => {
     setAnswers((current) => {
       const next = [...current[id]];
-      const targetIndex = index + direction;
+      const draggedIndex = next.indexOf(draggedItemId);
 
-      if (targetIndex < 0 || targetIndex >= next.length) return current;
+      if (draggedIndex === -1 || draggedIndex === targetIndex) return current;
 
-      [next[index], next[targetIndex]] = [next[targetIndex], next[index]];
+      const [draggedItem] = next.splice(draggedIndex, 1);
+      next.splice(targetIndex, 0, draggedItem);
 
       return {
         ...current,
@@ -1200,31 +1381,62 @@ export default function AnniversarySite() {
     if (isCorrect) markSolved(id);
   };
 
-  const handleMultiToggle = (id, choice) => {
-    setAnswers((current) => {
-      const selected = current[id];
-      const nextSelected = selected.includes(choice)
-        ? selected.filter((entry) => entry !== choice)
-        : [...selected, choice];
+  const handleReorderHint = () => {
+    setReorderHintActive(true);
+    window.setTimeout(() => {
+      setReorderHintActive(false);
+    }, 3000);
+  };
 
+  const handleWordleChange = (id, value) => {
+    setAnswers((current) => {
       return {
         ...current,
-        [id]: nextSelected,
+        [id]: {
+          ...current[id],
+          currentGuess: value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 5),
+        },
       };
     });
   };
 
-  const handleMultiSubmit = (id) => {
+  const handleWordleSubmit = (id) => {
     const puzzle = puzzles.find((entry) => entry.id === id);
 
-    if (!puzzle || puzzle.type !== "multi") return;
+    if (!puzzle || puzzle.type !== "wordle") return;
 
-    const selected = answers[id];
-    const isCorrect =
-      selected.length === puzzle.answer.length &&
-      puzzle.answer.every((choice) => selected.includes(choice));
+    const currentGuess = answers[id].currentGuess;
 
-    if (isCorrect) markSolved(id);
+    if (currentGuess.length !== 5 || answers[id].guesses.length >= 6) return;
+
+    const nextGuesses = [...answers[id].guesses, currentGuess];
+
+    setAnswers((current) => ({
+      ...current,
+      [id]: {
+        currentGuess: "",
+        guesses: nextGuesses,
+      },
+    }));
+
+    if (currentGuess === puzzle.answer) {
+      markSolved(id);
+    }
+  };
+
+  const handleResetProgress = () => {
+    if (typeof window !== "undefined") {
+      const confirmed = window.confirm("Reset all puzzle progress?");
+
+      if (!confirmed) return;
+
+      window.localStorage.removeItem(PUZZLE_STORAGE_KEY);
+    }
+
+    setAnswers(makeAnswerState());
+    setStatuses(makeStatusState());
+    setIsPuzzleOpen(false);
+    setView("site");
   };
 
   if (view === "final") {
@@ -1242,12 +1454,15 @@ export default function AnniversarySite() {
         onBundleSubmit={handleBundleSubmit}
         onCrosswordChange={handleCrosswordChange}
         onCrosswordSubmit={handleCrosswordSubmit}
-        onReorderMove={handleReorderMove}
+        onReorderDrop={handleReorderDrop}
         onReorderSubmit={handleReorderSubmit}
-        onMultiToggle={handleMultiToggle}
-        onMultiSubmit={handleMultiSubmit}
+        onReorderHint={handleReorderHint}
+        reorderHintActive={reorderHintActive}
+        onWordleChange={handleWordleChange}
+        onWordleSubmit={handleWordleSubmit}
         onClose={() => setIsPuzzleOpen(false)}
       />
+      <ResetProgressButton onReset={handleResetProgress} />
       {allFixed ? <FinalUnlock onOpenFinalPage={() => setView("final")} /> : null}
       <Nav solvedCount={solvedCount} onOpenPuzzle={() => setIsPuzzleOpen(true)} allFixed={allFixed} />
       <Hero solvedCount={solvedCount} onOpenPuzzle={() => setIsPuzzleOpen(true)} />
