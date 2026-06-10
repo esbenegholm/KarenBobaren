@@ -44,28 +44,224 @@ const logs = [
   },
 ];
 
+const timelineImageExtensions = {
+  1: "jpeg",
+  2: "JPG",
+  3: "jpeg",
+  4: "jpeg",
+  5: "jpeg",
+  6: "jpeg",
+  7: "jpeg",
+  8: "jpeg",
+  9: "jpeg",
+  10: "jpeg",
+  11: "jpeg",
+  12: "jpeg",
+  13: "jpeg",
+  14: "jpeg",
+  15: "jpeg",
+  16: "jpeg",
+  17: "jpeg",
+  18: "jpeg",
+  19: "jpeg",
+  20: "JPG",
+  21: "jpeg",
+  22: "jpeg",
+  23: "jpeg",
+  24: "jpeg",
+  25: "jpeg",
+  26: "jpeg",
+  27: "JPG",
+  28: "JPG",
+  29: "jpeg",
+  30: "jpeg",
+};
+
 const timelineEntries = [
   {
-    id: "display-velvet-taco",
-    title: "Velvet Taco",
-    detail: "The opening chapter.",
+    id: "timeline-1",
+    title: "ROADHOUSE TIME",
+    description:
+      "You brought me so rolls and food from your birthday cookout, so sweet of you to do this so early on, I love ya so much!",
   },
   {
-    id: "display-asia",
-    title: "ESBEN LEFT FOR ASIA",
-    detail: "The dramatic long-distance stretch.",
+    id: "timeline-2",
+    title: "ESBEN IN ASIA",
+    description:
+      "You made this pic and sent it to me while I was in Asia, not much more to it but it looks just like me it’s so well drawn, I LOVE YA SO MUCH WEEEEE",
   },
   {
-    id: "display-return",
-    title: "ESBEN IS BACK",
-    detail: "Back where he belonged.",
+    id: "timeline-3",
+    title: "CHIPOTLEEE",
+    description:
+      "You hooked me up with free comida and wow wow wow it was so amazing of you to do all that for me I love you so much!",
   },
   {
-    id: "display-uno-ano",
-    title: "THE BIG UNO ANO",
-    detail: "The whole reason this site exists.",
+    id: "timeline-4",
+    title: "NEW YORK NEW YORK",
+    description:
+      "This pic was you copying the style of the one I took in Vietnam, it made me smile smile smile… I LOVE YA",
   },
-];
+  {
+    id: "timeline-5",
+    title: "VEGAS BABAYYYYY",
+    description:
+      "This was my favorite trip from the Vegas trip (jetskis were awesome), and this was the birth of the greatest groupie photo of all time……. I LOVE YOUUUUUU",
+  },
+  {
+    id: "timeline-6",
+    title: "WHITE LINEN LINEN LINEN",
+    description:
+      "This was us getting ready for white linen, and even though you did not have the most fun, I would have had an awful time if you were not there. THIS IS WHY I LOVE YOU!",
+  },
+  {
+    id: "timeline-7",
+    title: "AGS BY 90",
+    description:
+      "This was our first Aggie football game together and I'm so glad that you're there with me for every future game we're gonna win the natty WOOOOOO I LOVE YOU RAHHH",
+  },
+  {
+    id: "timeline-8",
+    title: "YUMMY YUMMY",
+    description:
+      "When we made mini pancakes and it accidentally turned into the greatest breakfast sandwich of all time… YOU ARE A VISIONARY I LOVE YOU!!!!!!",
+  },
+  {
+    id: "timeline-9",
+    title: "OKTOBAH_FEST",
+    description:
+      "Dippin dots at this place were GAS and a little overpriced but anything is worth getting that smile on your face WEEEEEEE I LOVE YA I LOVE YA",
+  },
+  {
+    id: "timeline-10",
+    title: "GUMBYS",
+    description:
+      "This was the first time we got gumbos together and BROTHER that jawn was so good… but not as yummy as YOUUUU (which I love)",
+  },
+  {
+    id: "timeline-11",
+    title: "TRIP TO CSTAT",
+    description:
+      "Watching the auburn game was only fun because you were there (and we won). YOU ARE MY GOOD LUCK CHARM I LOVE YOU RADDA",
+  },
+  {
+    id: "timeline-12",
+    title: "PHO IN THE STAT",
+    description:
+      "First time getting pho in college station and it was pretty good, but it didn’t looks good as YOUUUUU I LOVE YA",
+  },
+  {
+    id: "timeline-13",
+    title: "LEGO LEGO LEGO",
+    description:
+      "Our little lego project, it wasn’t huge but it was so much fun, also it looks great on my shelf WEEWOOWEEWOO I LOVE YOU YOU YOU",
+  },
+  {
+    id: "timeline-14",
+    title: "HALLOWEENY",
+    description:
+      "Halloween party in Houston, it was the first time you met Juan and John and we had so much fun… plus you were pretty drunky… I LOVE LOVE LOVE KAREEN BLANCOOOOOO",
+  },
+  {
+    id: "timeline-15",
+    title: "POST CAR CRASH",
+    description:
+      "even though the deer was there, you were the one who picked my cute hitchhiker ahh up. You’re so real frfr I love you so much… I LOVE YOU",
+  },
+  {
+    id: "timeline-16",
+    title: "PRINCE STREET PIZZA",
+    description: "This pizza was so gas and food always tastes better with you. I LOVE YOU SO SO SO MUCH",
+  },
+  {
+    id: "timeline-17",
+    title: "REMOTE AGS",
+    description:
+      "nothing gets between us watching the best team ever play the best game ever……. I……. LOVE…… YOU…… WEEEEEE",
+  },
+  {
+    id: "timeline-18",
+    title: "BFAST BEGALS",
+    description:
+      "breakfast bengals were gas as fugggg and I just love making breakfast with you, it always ends up so gas gas gas. I LOVE YOU SO SO MUCH RADDA RADDA",
+  },
+  {
+    id: "timeline-19",
+    title: "BEST PHO EVAAAA",
+    description:
+      "We will never miss the chance to get ba le pho, and Ive only gotten it once without you and its ass (still gas but better with you)… man I love ya so much gal",
+  },
+  {
+    id: "timeline-20",
+    title: "CHRISTMAAAAS",
+    description:
+      "Christmas party was so fun to you, and even though I got sick and also clogged the toilet right before you had to dump before the party, I still had so much with you because we got to be together… and I LOVE BEING WITH YOU BECAUSE I LOVE YOU",
+  },
+  {
+    id: "timeline-21",
+    title: "GUNNNEERRRR",
+    description:
+      "We got to go shooting together and YOU HIT SOME MF CLAYS, you deadass might as well be a military sniper w that aim, you’re so amazing I love you so much",
+  },
+  {
+    id: "timeline-22",
+    title: "SNOW DAYYYY",
+    description:
+      "This walk to fiesta was so so so much fun, I never miss the chance to have fun with you, I cannot wait until we have 1,000,000 more adventures together!!!! BECAUSE I LOVE YOU",
+  },
+  {
+    id: "timeline-23",
+    title: "PLOMO DOMO",
+    description:
+      "Plomo was gas ngl but that shit sat so heavily so we had to go to our usual walking spot down lower Greenville, so much fun going to new places with you weeeeeee WWEEEEEE I LOVE YOU",
+  },
+  {
+    id: "timeline-24",
+    title: "ANIMAL TIMEEEE",
+    description:
+      "Fort Worth zoo was so much fun and seeing your eyes light up when you saw the animals made me so so so happy… you know why? BECAUSE I LOVE LOVE LOVE KAREN KAREN KAREN",
+  },
+  {
+    id: "timeline-25",
+    title: "PAN DE BONO",
+    description:
+      "This was so gas and made me feel a bit fat because of how many I damn near swallowed whole lmao… and you made them so so well… I LOVE YOU WEEWEWEWWWEEEEE",
+  },
+  {
+    id: "timeline-26",
+    title: "BARNES AND NOBLE",
+    description:
+      "This wasn’t the first time at barnes and noble, but it was the time that caused us to go again and again lmaooooo I love books…. AND YOUUUUUUU",
+  },
+  {
+    id: "timeline-27",
+    title: "ENGAGEMENT PARTAYYYYYYY",
+    description:
+      "Will’s engagement party made me see what type of houses we will be looking at as goest houses in the future because WE WILL SUCCEED TOGETHER BECAUSE I LOVE YOU",
+  },
+  {
+    id: "timeline-28",
+    title: "CABIN GETAWAYYYYY",
+    description:
+      "this was our little Oklahoma couples trip (we were the only couple), I had so much fun with you and ripping terraforming mars and watching hella movies was the BEST, and it was splendid because I LOVE KAREN I LOVE KAREN I LOVE KAREN",
+  },
+  {
+    id: "timeline-29",
+    title: "GRADDYYY",
+    description:
+      "Johan’s graduation party was su fun together, we got to dance together and eat that BUSSS AHHH CAKE, I love going to events with you and I love YYOUUUUUUUU",
+  },
+  {
+    id: "timeline-30",
+    title: "THANK YOU THANK YOU",
+    description:
+      "This isn’t any big event or anything, it was just the most recent picture I had uwu, typing all these and getting em on here took a while but MAN…. I love talking and typing about how much I love you and getting to look through pictures to make this timeline was so much fun, but not as fun as when I get to see that BIG FAT SMILE when I see you reading this…. I… LOVE…. KAREN…. BLANCO…. SO…. SO…. SO…. MUCH WEEEEEEEE RADDA RADDA RADDA BOOM BOOM SHAKALAKA WEEE I LOVE YOU!!!!!!!",
+  },
+].map((entry, index) => ({
+  ...entry,
+  src: new URL(`../images/timeline/timeline_${index + 1}.${timelineImageExtensions[index + 1]}`, import.meta.url)
+    .href,
+}));
 
 const timelinePuzzleMoments = [
   "Velvet Taco",
@@ -91,14 +287,96 @@ const timelinePuzzleMoments = [
   title,
 }));
 
+const everydayGalleryImagePaths = [
+  "/images/gallery/2214F646-A0A4-428F-B64E-EF995ED596EA.jpg",
+  "/images/gallery/76870454414__A23B06F5-FB4A-465B-959C-ED000F5FD612.fullsizerender.jpeg",
+  "/images/gallery/IMG_0034.jpeg",
+  "/images/gallery/IMG_0052.jpeg",
+  "/images/gallery/IMG_0197.jpeg",
+  "/images/gallery/IMG_0622.jpeg",
+  "/images/gallery/IMG_0683.jpeg",
+  "/images/gallery/IMG_0704.jpeg",
+  "/images/gallery/IMG_0925.JPG",
+  "/images/gallery/IMG_0928.JPG",
+  "/images/gallery/IMG_0931.JPG",
+  "/images/gallery/IMG_1089.JPG",
+  "/images/gallery/IMG_1121.jpeg",
+  "/images/gallery/IMG_2083.jpeg",
+  "/images/gallery/IMG_2087.jpeg",
+  "/images/gallery/IMG_2209.jpeg",
+  "/images/gallery/IMG_2212.jpeg",
+  "/images/gallery/IMG_2230.jpeg",
+  "/images/gallery/IMG_3194.JPG",
+  "/images/gallery/IMG_3250.jpeg",
+  "/images/gallery/IMG_4070.jpeg",
+  "/images/gallery/IMG_4100.jpeg",
+  "/images/gallery/IMG_4552.JPG",
+  "/images/gallery/IMG_4861.jpeg",
+  "/images/gallery/IMG_4961.jpg",
+  "/images/gallery/IMG_5055.jpg",
+  "/images/gallery/IMG_6777.JPG",
+  "/images/gallery/IMG_7405.jpeg",
+  "/images/gallery/IMG_7496.PNG",
+  "/images/gallery/IMG_7525.jpeg",
+  "/images/gallery/IMG_7546.jpeg",
+  "/images/gallery/IMG_7555.jpeg",
+  "/images/gallery/IMG_7587.jpeg",
+  "/images/gallery/IMG_7605.jpeg",
+  "/images/gallery/IMG_7606.jpeg",
+  "/images/gallery/IMG_7704.jpeg",
+  "/images/gallery/IMG_7729.jpeg",
+  "/images/gallery/IMG_7731.jpeg",
+  "/images/gallery/IMG_8059.jpeg",
+  "/images/gallery/IMG_8061.jpeg",
+  "/images/gallery/IMG_8063.jpeg",
+  "/images/gallery/IMG_8064.jpeg",
+  "/images/gallery/IMG_8091.jpeg",
+  "/images/gallery/IMG_8092.jpeg",
+  "/images/gallery/IMG_8097.jpeg",
+  "/images/gallery/IMG_8098.jpeg",
+  "/images/gallery/IMG_8143.jpeg",
+  "/images/gallery/IMG_8146.jpeg",
+  "/images/gallery/IMG_8301.jpeg",
+  "/images/gallery/IMG_8330.jpeg",
+  "/images/gallery/IMG_8335.jpeg",
+  "/images/gallery/IMG_8380.jpeg",
+  "/images/gallery/IMG_8382.jpeg",
+  "/images/gallery/IMG_8385.jpeg",
+  "/images/gallery/IMG_8386.jpeg",
+  "/images/gallery/IMG_8456.jpeg",
+  "/images/gallery/IMG_8488.jpeg",
+  "/images/gallery/IMG_8533.jpeg",
+  "/images/gallery/IMG_8617.jpeg",
+  "/images/gallery/IMG_8673.jpeg",
+  "/images/gallery/IMG_8674.jpeg",
+  "/images/gallery/IMG_8680.jpeg",
+  "/images/gallery/IMG_9147.jpeg",
+  "/images/gallery/IMG_9158.jpeg",
+  "/images/gallery/IMG_9200.jpeg",
+  "/images/gallery/IMG_9383.jpeg",
+  "/images/gallery/IMG_9733.jpeg",
+  "/images/gallery/IMG_9842.jpeg",
+  "/images/gallery/bignose.jpeg",
+  "/images/gallery/lp_image (1).jpeg",
+  "/images/gallery/lp_image (2).jpeg",
+  "/images/gallery/lp_image.jpeg",
+];
+
+const shuffleArray = (items) => {
+  const next = [...items];
+
+  for (let index = next.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
+  }
+
+  return next;
+};
+
 const albums = [
   {
     name: "Everyday",
-    photos: [
-      { src: "/images/gallery/bignose.jpeg", caption: "BIG NOSE KAREN" },
-      { src: "/images/gallery/everyday-2.jpg", caption: "Car karaoke" },
-      { src: "/images/gallery/everyday-3.jpg", caption: "Cooking chaos" },
-    ],
+    photos: everydayGalleryImagePaths.map((src) => ({ src, caption: "" })),
   },
   {
     name: "Little Trips",
@@ -449,7 +727,7 @@ const FinalUnlock = ({ onOpenFinalPage }) => (
   </section>
 );
 
-const Nav = ({ solvedCount, onOpenPuzzle, allFixed }) => (
+const Nav = ({ solvedCount, allFixed }) => (
   <header
     className={`sticky top-0 z-40 border-b border-neutral-200 backdrop-blur supports-[backdrop-filter]:bg-white/70 ${
       allFixed ? "" : "rotate-[0.2deg]"
@@ -474,17 +752,13 @@ const Nav = ({ solvedCount, onOpenPuzzle, allFixed }) => (
             {solvedCount >= 4 ? "About" : scrambleText("About")}
           </a>
         </nav>
-        <button
-          type="button"
-          onClick={onOpenPuzzle}
-          className="inline-flex items-center gap-2 rounded-full border border-dashed border-neutral-900 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900 transition hover:-rotate-2 hover:bg-neutral-900 hover:text-white"
-        >
-          Fix This
+        <div className="inline-flex items-center gap-2 rounded-full border border-dashed border-neutral-900 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+          Repairs
           <Scribble />
           <span className="rounded-full bg-neutral-900 px-1.5 py-0.5 text-[10px] text-white">
             {solvedCount}/{puzzles.length}
           </span>
-        </button>
+        </div>
       </div>
     </Container>
   </header>
@@ -522,7 +796,7 @@ const Hero = ({ solvedCount, onOpenPuzzle }) => {
               }`}
             >
               {fixed
-                ? "Karen, this little corner of the internet was supposed to feel neat and complete, but apparently it needed your help first. Fix the rest and then follow it all the way through."
+                ? "Karen, this little corner of the internet is reserved to celebrate our UNO AÑO, I love you more and more every single day!!!! Ever since we met I have had so much fun with you, and here is to every adventure we have had and every one we will have moving forward. YOU DA BEST RADDA RADDA"
                 : scrambleText(
                     "Karen, this little corner of the internet is broken in a very suspiciously dramatic way. Fix it."
                   )}
@@ -530,10 +804,10 @@ const Hero = ({ solvedCount, onOpenPuzzle }) => {
             <div className="mt-6 flex flex-wrap gap-3">
               <button
                 type="button"
-                onClick={onOpenPuzzle}
+                onClick={() => onOpenPuzzle("memory-questions")}
                 className="group inline-flex items-center gap-3 rounded-[1.75rem] border-2 border-dashed border-neutral-900 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-[4px_4px_0_0_rgba(34,34,34,0.12)] transition hover:-translate-y-0.5 hover:rotate-[-1deg]"
               >
-                <span className="leading-none">click the scribble to fix me</span>
+                <span className="leading-none">repair the homepage</span>
                 <span className="text-[#F28CA3] transition group-hover:rotate-6">
                   <Scribble />
                 </span>
@@ -825,9 +1099,8 @@ const WordlePuzzle = ({ puzzle, value, onChange, onSubmit, solved }) => {
   );
 };
 
-const PuzzlePanel = ({
-  isOpen,
-  solvedCount,
+const PuzzleModal = ({
+  puzzle,
   answers,
   statuses,
   onBundleChange,
@@ -842,7 +1115,9 @@ const PuzzlePanel = ({
   onWordleSubmit,
   onClose,
 }) => {
-  if (!isOpen) return null;
+  if (!puzzle) return null;
+
+  const solved = statuses[puzzle.id];
 
   return (
     <div
@@ -860,11 +1135,10 @@ const PuzzlePanel = ({
                 repair protocol
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-neutral-900 sm:text-3xl">
-                Karen has to fix the page
+                {puzzle.prompt}
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700 sm:text-base">
-                The first repair is the question bundle. After that, three separate broken areas
-                each need a different kind of fix.
+                Solve this repair to restore the matching broken section of the site.
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -886,104 +1160,69 @@ const PuzzlePanel = ({
             </div>
           </div>
 
-          <div className="mt-6 flex items-center gap-3 text-sm text-neutral-600">
-            <div className="h-2 flex-1 rounded-full bg-neutral-200">
-              <div
-                className="h-2 rounded-full bg-[#F28CA3] transition-all duration-500"
-                style={{ width: `${(solvedCount / puzzles.length) * 100}%` }}
-              />
+          <div
+            className={`mt-6 rounded-2xl border p-4 transition ${
+              solved ? "border-emerald-300 bg-emerald-50/60" : "border-neutral-200 bg-white"
+            }`}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
+                {puzzle.id.replace(/-/g, " ")}
+              </p>
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${
+                  solved ? "bg-emerald-600 text-white" : "bg-neutral-900 text-white"
+                }`}
+              >
+                {solved ? "fixed" : "active"}
+              </span>
             </div>
-            <span>
-              {solvedCount}/{puzzles.length} fixed
-            </span>
-          </div>
 
-          <div className="mt-8 grid gap-5">
-            {puzzles.map((puzzle, index) => {
-              const solved = statuses[puzzle.id];
-              const unlocked = index === 0 || statuses[puzzles[index - 1].id];
+            {puzzle.type === "bundle" ? (
+              <BundlePuzzle
+                puzzle={puzzle}
+                value={answers[puzzle.id]}
+                onChange={onBundleChange}
+                onSubmit={onBundleSubmit}
+                solved={solved}
+              />
+            ) : null}
 
-              return (
-                <div
-                  key={puzzle.id}
-                  className={`rounded-2xl border p-4 transition ${
-                    solved
-                      ? "border-emerald-300 bg-emerald-50/60"
-                      : unlocked
-                        ? "border-neutral-200 bg-white"
-                        : "border-neutral-200 bg-neutral-100/80 opacity-60"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
-                        puzzle {index + 1}
-                      </p>
-                      <h3 className="mt-1 text-lg font-semibold text-neutral-900">
-                        {unlocked ? puzzle.prompt : "Locked until the repair above is finished."}
-                      </h3>
-                    </div>
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${
-                        solved
-                          ? "bg-emerald-600 text-white"
-                          : unlocked
-                            ? "bg-neutral-900 text-white"
-                            : "bg-neutral-300 text-neutral-600"
-                      }`}
-                    >
-                      {solved ? "fixed" : unlocked ? "active" : "locked"}
-                    </span>
-                  </div>
+            {puzzle.type === "crossword" ? (
+              <CrosswordPuzzle
+                puzzle={puzzle}
+                value={answers[puzzle.id]}
+                onChange={onCrosswordChange}
+                onSubmit={onCrosswordSubmit}
+                solved={solved}
+              />
+            ) : null}
 
-                  {unlocked && puzzle.type === "bundle" ? (
-                    <BundlePuzzle
-                      puzzle={puzzle}
-                      value={answers[puzzle.id]}
-                      onChange={onBundleChange}
-                      onSubmit={onBundleSubmit}
-                      solved={solved}
-                    />
-                  ) : null}
+            {puzzle.type === "reorder" ? (
+              <ReorderPuzzle
+                puzzle={puzzle}
+                value={answers[puzzle.id]}
+                onDropItem={onReorderDrop}
+                onSubmit={onReorderSubmit}
+                onHint={onReorderHint}
+                hintActive={reorderHintActive}
+                solved={solved}
+              />
+            ) : null}
 
-                  {unlocked && puzzle.type === "crossword" ? (
-                    <CrosswordPuzzle
-                      puzzle={puzzle}
-                      value={answers[puzzle.id]}
-                      onChange={onCrosswordChange}
-                      onSubmit={onCrosswordSubmit}
-                      solved={solved}
-                    />
-                  ) : null}
+            {puzzle.type === "wordle" ? (
+              <WordlePuzzle
+                puzzle={puzzle}
+                value={answers[puzzle.id]}
+                onChange={onWordleChange}
+                onSubmit={onWordleSubmit}
+                solved={solved}
+              />
+            ) : null}
 
-                  {unlocked && puzzle.type === "reorder" ? (
-                    <ReorderPuzzle
-                      puzzle={puzzle}
-                      value={answers[puzzle.id]}
-                      onDropItem={onReorderDrop}
-                      onSubmit={onReorderSubmit}
-                      onHint={onReorderHint}
-                      hintActive={reorderHintActive}
-                      solved={solved}
-                    />
-                  ) : null}
-
-                  {unlocked && puzzle.type === "wordle" ? (
-                    <WordlePuzzle
-                      puzzle={puzzle}
-                      value={answers[puzzle.id]}
-                      onChange={onWordleChange}
-                      onSubmit={onWordleSubmit}
-                      solved={solved}
-                    />
-                  ) : null}
-
-                  <p className={`mt-3 text-sm ${solved ? "text-emerald-700" : "text-neutral-500"}`}>
-                    {solved ? puzzle.repair : unlocked ? "Still broken." : "Finish the previous repair first."}
-                  </p>
-                </div>
-              );
-            })}
+            <p className={`mt-3 text-sm ${solved ? "text-emerald-700" : "text-neutral-500"}`}>
+              {solved ? puzzle.repair : "Still broken."}
+            </p>
           </div>
         </Card>
       </div>
@@ -991,7 +1230,7 @@ const PuzzlePanel = ({
   );
 };
 
-const LogsIndex = ({ solvedCount }) => {
+const LogsIndex = ({ solvedCount, onOpenPuzzle }) => {
   const fixed = solvedCount >= 2;
 
   return (
@@ -1001,6 +1240,15 @@ const LogsIndex = ({ solvedCount }) => {
       subtitle={fixed ? "Short letters and memories." : scrambleText("These memories are still drifting around.")}
       className={fixed ? "" : "rotate-[1deg]"}
     >
+      {!fixed ? (
+        <button
+          type="button"
+          onClick={() => onOpenPuzzle("crossword")}
+          className="mb-5 rounded-full border-2 border-dashed border-neutral-900 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:rotate-[-1deg]"
+        >
+          Repair the logs
+        </button>
+      ) : null}
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <Tag>{fixed ? "firsts" : "???"}</Tag>
         <Tag>{fixed ? "everyday" : "???"}</Tag>
@@ -1052,7 +1300,7 @@ const LogsIndex = ({ solvedCount }) => {
   );
 };
 
-const Timeline = ({ solvedCount }) => {
+const Timeline = ({ solvedCount, onOpenPuzzle }) => {
   const fixed = solvedCount >= 3;
 
   return (
@@ -1062,6 +1310,15 @@ const Timeline = ({ solvedCount }) => {
       subtitle={fixed ? "A few milestones so far." : scrambleText("The dates are still resisting repair.")}
       className={fixed ? "" : "opacity-80"}
     >
+      {!fixed ? (
+        <button
+          type="button"
+          onClick={() => onOpenPuzzle("timeline-order")}
+          className="mb-5 rounded-full border-2 border-dashed border-neutral-900 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:rotate-[1deg]"
+        >
+          Repair the timeline
+        </button>
+      ) : null}
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-px bg-neutral-200 sm:left-1/2" />
         <div className="space-y-8">
@@ -1080,14 +1337,24 @@ const Timeline = ({ solvedCount }) => {
                 }`}
               >
                 <Card className={fixed ? "" : "border-dashed"}>
-                  <div className="flex items-center justify-between text-xs text-neutral-600">
+                  <div className="flex items-center justify-between gap-3 text-xs text-neutral-600">
                     <span>memory {index + 1}</span>
-                    <span>{fixed ? item.title : scrambleText(item.title)}</span>
+                    <span>timeline_{index + 1}</span>
                   </div>
-                  <p className="mt-2 text-sm text-neutral-800">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className={`mt-3 aspect-[4/5] w-full rounded-[1.5rem] object-cover transition ${
+                      fixed ? "" : "blur-sm saturate-50"
+                    }`}
+                  />
+                  <h3 className="mt-4 text-lg font-semibold text-neutral-900">
+                    {fixed ? item.title : scrambleText(item.title)}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-800">
                     {fixed
-                      ? `Part ${index + 1} of the year.`
-                      : scrambleText(`Part ${index + 1} of the year.`)}
+                      ? item.description || "No caption for this one, just the memory."
+                      : scrambleText(item.description || "No caption for this one, just the memory.")}
                   </p>
                 </Card>
               </div>
@@ -1100,8 +1367,13 @@ const Timeline = ({ solvedCount }) => {
   );
 };
 
-const Gallery = ({ solvedCount }) => {
+const Gallery = ({ solvedCount, onOpenPuzzle }) => {
   const fixed = solvedCount >= 4;
+  const [everydayPhotos] = useState(() => shuffleArray(albums[0].photos));
+  const displayAlbums = [
+    { ...albums[0], photos: everydayPhotos },
+    ...albums.slice(1),
+  ];
 
   return (
     <Section
@@ -1110,8 +1382,17 @@ const Gallery = ({ solvedCount }) => {
       subtitle={fixed ? "The good stuff is back." : scrambleText("The pictures are still sulking.")}
       className={fixed ? "" : "opacity-65"}
     >
+      {!fixed ? (
+        <button
+          type="button"
+          onClick={() => onOpenPuzzle("site-kit")}
+          className="mb-5 rounded-full border-2 border-dashed border-neutral-900 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:rotate-[-1deg]"
+        >
+          Repair the last section
+        </button>
+      ) : null}
       <div className="space-y-8">
-        {albums.map((album) => (
+        {displayAlbums.map((album) => (
           <div key={album.name}>
             <h3 className="mb-3 text-lg font-semibold">{fixed ? album.name : scrambleText(album.name)}</h3>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -1125,9 +1406,11 @@ const Gallery = ({ solvedCount }) => {
                     alt={photo.caption}
                     className={fixed ? "" : "sepia saturate-50 border-dashed"}
                   />
-                  <figcaption className="mt-1 text-xs text-neutral-500">
-                    {fixed ? photo.caption : "???"}
-                  </figcaption>
+                  {photo.caption ? (
+                    <figcaption className="mt-1 text-xs text-neutral-500">
+                      {fixed ? photo.caption : "???"}
+                    </figcaption>
+                  ) : null}
                 </figure>
               ))}
             </div>
@@ -1234,7 +1517,7 @@ const ResetProgressButton = ({ onReset }) => (
 export default function AnniversarySite() {
   const initialState = readSavedPuzzleProgress();
   const [view, setView] = useState("site");
-  const [isPuzzleOpen, setIsPuzzleOpen] = useState(false);
+  const [activePuzzleId, setActivePuzzleId] = useState(null);
   const [answers, setAnswers] = useState(initialState.answers);
   const [statuses, setStatuses] = useState(initialState.statuses);
   const [reorderHintActive, setReorderHintActive] = useState(false);
@@ -1274,18 +1557,18 @@ export default function AnniversarySite() {
   }, [answers, statuses]);
 
   useEffect(() => {
-    if (!isPuzzleOpen || typeof window === "undefined") return undefined;
+    if (!activePuzzleId || typeof window === "undefined") return undefined;
 
     const onKeyDown = (event) => {
       if (event.key === "Escape") {
-        setIsPuzzleOpen(false);
+        setActivePuzzleId(null);
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
 
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isPuzzleOpen]);
+  }, [activePuzzleId]);
 
   const solvedCount = Object.values(statuses).filter(Boolean).length;
   const allFixed = solvedCount === puzzles.length;
@@ -1435,7 +1718,7 @@ export default function AnniversarySite() {
 
     setAnswers(makeAnswerState());
     setStatuses(makeStatusState());
-    setIsPuzzleOpen(false);
+    setActivePuzzleId(null);
     setView("site");
   };
 
@@ -1443,11 +1726,12 @@ export default function AnniversarySite() {
     return <FinalPage onBack={() => setView("site")} />;
   }
 
+  const activePuzzle = puzzles.find((puzzle) => puzzle.id === activePuzzleId) ?? null;
+
   return (
     <div className={`${theme.bg} min-h-screen ${theme.text}`}>
-      <PuzzlePanel
-        isOpen={isPuzzleOpen}
-        solvedCount={solvedCount}
+      <PuzzleModal
+        puzzle={activePuzzle}
         answers={answers}
         statuses={statuses}
         onBundleChange={handleBundleChange}
@@ -1460,15 +1744,15 @@ export default function AnniversarySite() {
         reorderHintActive={reorderHintActive}
         onWordleChange={handleWordleChange}
         onWordleSubmit={handleWordleSubmit}
-        onClose={() => setIsPuzzleOpen(false)}
+        onClose={() => setActivePuzzleId(null)}
       />
       <ResetProgressButton onReset={handleResetProgress} />
       {allFixed ? <FinalUnlock onOpenFinalPage={() => setView("final")} /> : null}
-      <Nav solvedCount={solvedCount} onOpenPuzzle={() => setIsPuzzleOpen(true)} allFixed={allFixed} />
-      <Hero solvedCount={solvedCount} onOpenPuzzle={() => setIsPuzzleOpen(true)} />
-      <LogsIndex solvedCount={solvedCount} />
-      <Timeline solvedCount={solvedCount} />
-      <Gallery solvedCount={solvedCount} />
+      <Nav solvedCount={solvedCount} allFixed={allFixed} />
+      <Hero solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
+      <LogsIndex solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
+      <Timeline solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
+      <Gallery solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
       <About solvedCount={solvedCount} />
       <Footer solvedCount={solvedCount} />
     </div>
