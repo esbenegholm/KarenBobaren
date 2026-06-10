@@ -1064,11 +1064,13 @@ const PuzzleModal = ({
   reorderHintActive,
   onWordleChange,
   onWordleSubmit,
+  onDevSolve,
   onClose,
 }) => {
   if (!puzzle) return null;
 
   const solved = statuses[puzzle.id];
+  const isDev = import.meta.env.DEV;
 
   return (
     <div
@@ -1120,13 +1122,25 @@ const PuzzleModal = ({
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
                 {puzzle.id.replace(/-/g, " ")}
               </p>
-              <span
-                className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${
-                  solved ? "bg-emerald-600 text-white" : "bg-neutral-900 text-white"
-                }`}
-              >
-                {solved ? "fixed" : "active"}
-              </span>
+              <div className="flex items-center gap-2">
+                {isDev ? (
+                  <button
+                    type="button"
+                    onClick={() => onDevSolve(puzzle.id)}
+                    disabled={solved}
+                    className="rounded-full border border-dashed border-amber-400 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700 transition hover:bg-amber-50 disabled:cursor-default disabled:opacity-50"
+                  >
+                    Solve instantly
+                  </button>
+                ) : null}
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${
+                    solved ? "bg-emerald-600 text-white" : "bg-neutral-900 text-white"
+                  }`}
+                >
+                  {solved ? "fixed" : "active"}
+                </span>
+              </div>
             </div>
 
             {puzzle.type === "bundle" ? (
@@ -1467,6 +1481,10 @@ export default function AnniversarySite() {
     }));
   };
 
+  const handleDevSolve = (id) => {
+    markSolved(id);
+  };
+
   const handleBundleChange = (id, key, value) => {
     setAnswers((current) => ({
       ...current,
@@ -1631,6 +1649,7 @@ export default function AnniversarySite() {
         reorderHintActive={reorderHintActive}
         onWordleChange={handleWordleChange}
         onWordleSubmit={handleWordleSubmit}
+        onDevSolve={handleDevSolve}
         onClose={() => setActivePuzzleId(null)}
       />
       <ResetProgressButton onReset={handleResetProgress} />
