@@ -6,38 +6,26 @@ const theme = {
   border: "border-[#eaeaea]",
 };
 
-const timelineImageExtensions = {
-  1: "jpeg",
-  2: "JPG",
-  3: "jpeg",
-  4: "jpeg",
-  5: "jpeg",
-  6: "jpeg",
-  7: "jpeg",
-  8: "jpeg",
-  9: "jpeg",
-  10: "jpeg",
-  11: "jpeg",
-  12: "jpeg",
-  13: "jpeg",
-  14: "jpeg",
-  15: "jpeg",
-  16: "jpeg",
-  17: "jpeg",
-  18: "jpeg",
-  19: "jpeg",
-  20: "JPG",
-  21: "jpeg",
-  22: "jpeg",
-  23: "jpeg",
-  24: "jpeg",
-  25: "jpeg",
-  26: "jpeg",
-  27: "JPG",
-  28: "JPG",
-  29: "jpeg",
-  30: "jpeg",
-};
+const timelineImageSources = Object.entries(
+  import.meta.glob("../images/timeline/timeline_*.{jpeg,JPG}", {
+    eager: true,
+    import: "default",
+  }),
+)
+  .sort(([pathA], [pathB]) => {
+    const matchA = pathA.match(/timeline_(\d+)\.(?:jpeg|JPG)$/);
+    const matchB = pathB.match(/timeline_(\d+)\.(?:jpeg|JPG)$/);
+    return Number(matchA?.[1] ?? 0) - Number(matchB?.[1] ?? 0);
+  })
+  .map(([, src]) => src);
+
+const galleryImageMap = import.meta.glob("../images/gallery/*.{jpg,jpeg,JPG,PNG}", {
+  eager: true,
+  import: "default",
+});
+
+const coverImageSrc = new URL("../images/cover.jpeg", import.meta.url).href;
+const aboutImageSrc = new URL("../images/abtus.jpeg", import.meta.url).href;
 
 const timelineEntries = [
   {
@@ -221,8 +209,7 @@ const timelineEntries = [
   },
 ].map((entry, index) => ({
   ...entry,
-  src: new URL(`../images/timeline/timeline_${index + 1}.${timelineImageExtensions[index + 1]}`, import.meta.url)
-    .href,
+  src: timelineImageSources[index] ?? "",
 }));
 
 const timelinePuzzleMoments = [
@@ -250,79 +237,79 @@ const timelinePuzzleMoments = [
 }));
 
 const everydayGalleryImagePaths = [
-  "/images/gallery/2214F646-A0A4-428F-B64E-EF995ED596EA.jpg",
-  "/images/gallery/76870454414__A23B06F5-FB4A-465B-959C-ED000F5FD612.fullsizerender.jpeg",
-  "/images/gallery/IMG_0034.jpeg",
-  "/images/gallery/IMG_0052.jpeg",
-  "/images/gallery/IMG_0197.jpeg",
-  "/images/gallery/IMG_0622.jpeg",
-  "/images/gallery/IMG_0683.jpeg",
-  "/images/gallery/IMG_0704.jpeg",
-  "/images/gallery/IMG_0925.JPG",
-  "/images/gallery/IMG_0928.JPG",
-  "/images/gallery/IMG_0931.JPG",
-  "/images/gallery/IMG_1089.JPG",
-  "/images/gallery/IMG_1121.jpeg",
-  "/images/gallery/IMG_2083.jpeg",
-  "/images/gallery/IMG_2087.jpeg",
-  "/images/gallery/IMG_2209.jpeg",
-  "/images/gallery/IMG_2212.jpeg",
-  "/images/gallery/IMG_2230.jpeg",
-  "/images/gallery/IMG_3194.JPG",
-  "/images/gallery/IMG_3250.jpeg",
-  "/images/gallery/IMG_4070.jpeg",
-  "/images/gallery/IMG_4100.jpeg",
-  "/images/gallery/IMG_4552.JPG",
-  "/images/gallery/IMG_4861.jpeg",
-  "/images/gallery/IMG_4961.jpg",
-  "/images/gallery/IMG_5055.jpg",
-  "/images/gallery/IMG_6777.JPG",
-  "/images/gallery/IMG_7405.jpeg",
-  "/images/gallery/IMG_7496.PNG",
-  "/images/gallery/IMG_7525.jpeg",
-  "/images/gallery/IMG_7546.jpeg",
-  "/images/gallery/IMG_7555.jpeg",
-  "/images/gallery/IMG_7587.jpeg",
-  "/images/gallery/IMG_7605.jpeg",
-  "/images/gallery/IMG_7606.jpeg",
-  "/images/gallery/IMG_7704.jpeg",
-  "/images/gallery/IMG_7729.jpeg",
-  "/images/gallery/IMG_7731.jpeg",
-  "/images/gallery/IMG_8059.jpeg",
-  "/images/gallery/IMG_8061.jpeg",
-  "/images/gallery/IMG_8063.jpeg",
-  "/images/gallery/IMG_8064.jpeg",
-  "/images/gallery/IMG_8091.jpeg",
-  "/images/gallery/IMG_8092.jpeg",
-  "/images/gallery/IMG_8097.jpeg",
-  "/images/gallery/IMG_8098.jpeg",
-  "/images/gallery/IMG_8143.jpeg",
-  "/images/gallery/IMG_8146.jpeg",
-  "/images/gallery/IMG_8301.jpeg",
-  "/images/gallery/IMG_8330.jpeg",
-  "/images/gallery/IMG_8335.jpeg",
-  "/images/gallery/IMG_8380.jpeg",
-  "/images/gallery/IMG_8382.jpeg",
-  "/images/gallery/IMG_8385.jpeg",
-  "/images/gallery/IMG_8386.jpeg",
-  "/images/gallery/IMG_8456.jpeg",
-  "/images/gallery/IMG_8488.jpeg",
-  "/images/gallery/IMG_8533.jpeg",
-  "/images/gallery/IMG_8617.jpeg",
-  "/images/gallery/IMG_8673.jpeg",
-  "/images/gallery/IMG_8674.jpeg",
-  "/images/gallery/IMG_8680.jpeg",
-  "/images/gallery/IMG_9147.jpeg",
-  "/images/gallery/IMG_9158.jpeg",
-  "/images/gallery/IMG_9200.jpeg",
-  "/images/gallery/IMG_9383.jpeg",
-  "/images/gallery/IMG_9733.jpeg",
-  "/images/gallery/IMG_9842.jpeg",
-  "/images/gallery/bignose.jpeg",
-  "/images/gallery/lp_image (1).jpeg",
-  "/images/gallery/lp_image (2).jpeg",
-  "/images/gallery/lp_image.jpeg",
-];
+  "2214F646-A0A4-428F-B64E-EF995ED596EA.jpg",
+  "76870454414__A23B06F5-FB4A-465B-959C-ED000F5FD612.fullsizerender.jpeg",
+  "IMG_0034.jpeg",
+  "IMG_0052.jpeg",
+  "IMG_0197.jpeg",
+  "IMG_0622.jpeg",
+  "IMG_0683.jpeg",
+  "IMG_0704.jpeg",
+  "IMG_0925.JPG",
+  "IMG_0928.JPG",
+  "IMG_0931.JPG",
+  "IMG_1089.JPG",
+  "IMG_1121.jpeg",
+  "IMG_2083.jpeg",
+  "IMG_2087.jpeg",
+  "IMG_2209.jpeg",
+  "IMG_2212.jpeg",
+  "IMG_2230.jpeg",
+  "IMG_3194.JPG",
+  "IMG_3250.jpeg",
+  "IMG_4070.jpeg",
+  "IMG_4100.jpeg",
+  "IMG_4552.JPG",
+  "IMG_4861.jpeg",
+  "IMG_4961.jpg",
+  "IMG_5055.jpg",
+  "IMG_6777.JPG",
+  "IMG_7405.jpeg",
+  "IMG_7496.PNG",
+  "IMG_7525.jpeg",
+  "IMG_7546.jpeg",
+  "IMG_7555.jpeg",
+  "IMG_7587.jpeg",
+  "IMG_7605.jpeg",
+  "IMG_7606.jpeg",
+  "IMG_7704.jpeg",
+  "IMG_7729.jpeg",
+  "IMG_7731.jpeg",
+  "IMG_8059.jpeg",
+  "IMG_8061.jpeg",
+  "IMG_8063.jpeg",
+  "IMG_8064.jpeg",
+  "IMG_8091.jpeg",
+  "IMG_8092.jpeg",
+  "IMG_8097.jpeg",
+  "IMG_8098.jpeg",
+  "IMG_8143.jpeg",
+  "IMG_8146.jpeg",
+  "IMG_8301.jpeg",
+  "IMG_8330.jpeg",
+  "IMG_8335.jpeg",
+  "IMG_8380.jpeg",
+  "IMG_8382.jpeg",
+  "IMG_8385.jpeg",
+  "IMG_8386.jpeg",
+  "IMG_8456.jpeg",
+  "IMG_8488.jpeg",
+  "IMG_8533.jpeg",
+  "IMG_8617.jpeg",
+  "IMG_8673.jpeg",
+  "IMG_8674.jpeg",
+  "IMG_8680.jpeg",
+  "IMG_9147.jpeg",
+  "IMG_9158.jpeg",
+  "IMG_9200.jpeg",
+  "IMG_9383.jpeg",
+  "IMG_9733.jpeg",
+  "IMG_9842.jpeg",
+  "bignose.jpeg",
+  "lp_image (1).jpeg",
+  "lp_image (2).jpeg",
+  "lp_image.jpeg",
+].map((filename) => galleryImageMap[`../images/gallery/${filename}`]).filter(Boolean);
 
 const shuffleArray = (items) => {
   const next = [...items];
@@ -779,7 +766,7 @@ const Hero = ({ solvedCount, onOpenPuzzle }) => {
             }`}
           >
             <PlacePhoto
-              src="/images/cover.jpeg"
+              src={coverImageSrc}
               alt="My favorite photo of us"
               className={fixed ? "" : "border-dashed"}
             />
@@ -1070,7 +1057,6 @@ const PuzzleModal = ({
   if (!puzzle) return null;
 
   const solved = statuses[puzzle.id];
-  const isDev = import.meta.env.DEV;
 
   return (
     <div
@@ -1123,16 +1109,14 @@ const PuzzleModal = ({
                 {puzzle.id.replace(/-/g, " ")}
               </p>
               <div className="flex items-center gap-2">
-                {isDev ? (
-                  <button
-                    type="button"
-                    onClick={() => onDevSolve(puzzle.id)}
-                    disabled={solved}
-                    className="rounded-full border border-dashed border-amber-400 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700 transition hover:bg-amber-50 disabled:cursor-default disabled:opacity-50"
-                  >
-                    Solve instantly
-                  </button>
-                ) : null}
+                <button
+                  type="button"
+                  onClick={() => onDevSolve(puzzle.id)}
+                  disabled={solved}
+                  className="rounded-full border border-dashed border-amber-400 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700 transition hover:bg-amber-50 disabled:cursor-default disabled:opacity-50"
+                >
+                  Solve instantly
+                </button>
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${
                     solved ? "bg-emerald-600 text-white" : "bg-neutral-900 text-white"
@@ -1356,7 +1340,7 @@ const About = ({ solvedCount, onOpenPuzzle }) => {
           </div>
           <div>
             <PlacePhoto
-              src="/images/abtus.jpeg"
+              src={aboutImageSrc}
               alt="Photo strip"
               className={fixed ? "" : "rotate-3 grayscale border-dashed"}
             />
