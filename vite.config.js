@@ -1,8 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwind from "@tailwindcss/vite";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwind from '@tailwindcss/vite'   // <-- add this
 
 export default defineConfig({
-  base: "/KarenBobaren/",
-  plugins: [react(), tailwind()],
-});
+  plugins: [react(), tailwind()]           // <-- and this
+})

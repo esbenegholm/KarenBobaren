@@ -6,6 +6,44 @@ const theme = {
   border: "border-[#eaeaea]",
 };
 
+const logs = [
+  {
+    slug: "first-lattes",
+    title: "Iced lattes & nervous laughs",
+    date: "2025-05-04",
+    location: "Local café",
+    heroImage: "/images/logs/first-lattes.jpg",
+    excerpt:
+      "I still hear the clink of ice and your laugh when I think about that first hour…",
+    body: [
+      "Karen, I didn’t expect a two-hour coffee to feel like ten minutes.",
+      "You always find the funny angle before I find the words.",
+      "I learned that day that comfortable can happen fast, and I loved that.",
+    ],
+    photos: [
+      { src: "/images/logs/first-lattes-1.jpg", caption: "The iced latte ring" },
+      { src: "/images/logs/first-lattes-2.jpg", caption: "That smile." },
+    ],
+    tags: ["firsts"],
+  },
+  {
+    slug: "rain-walk",
+    title: "Walk in the rain",
+    date: "2025-06-10",
+    location: "Neighborhood",
+    heroImage: "/images/logs/rain-walk.jpg",
+    excerpt:
+      "We dodged puddles, shared earbuds, and let the streetlights blur into gold.",
+    body: [
+      "You tucked your hand into my sleeve like it belonged there.",
+      "A tiny thing that made me smile: your hair doing that curl at the ends.",
+      "Wish for us: more walks, more weather, same us.",
+    ],
+    photos: [],
+    tags: ["everyday"],
+  },
+];
+
 const timelineImageExtensions = {
   1: "jpeg",
   2: "JPG",
@@ -386,7 +424,7 @@ const puzzles = [
   {
     id: "crossword",
     type: "crossword",
-    prompt: "The final note is still jammed. Fill the crossword clues.",
+    prompt: "The logs and navigation are still jammed. Fill the crossword clues.",
     clues: [
       { key: "asia", number: 1, direction: "across", row: 0, col: 5, text: "esben went here before we became official", answer: "ASIA" },
       { key: "jetski", number: 2, direction: "down", row: 0, col: 1, text: "what did we use on our water based adventure", answer: "JETSKI" },
@@ -400,7 +438,7 @@ const puzzles = [
       { key: "dallas", number: 10, direction: "across", row: 8, col: 4, text: "where did we tour apartments", answer: "DALLAS" },
       { key: "love", number: 11, direction: "down", row: 8, col: 7, text: "what are we in", answer: "LOVE" },
     ],
-    repair: "The final note locks into place.",
+    repair: "The logs and navigation stop drifting and lock into place.",
   },
   {
     id: "timeline-order",
@@ -438,7 +476,7 @@ const puzzles = [
   },
 ];
 
-const PUZZLE_STORAGE_KEY = "karen-anniversary-puzzle-progress-v5";
+const PUZZLE_STORAGE_KEY = "karen-anniversary-puzzle-progress-v3";
 const FINAL_MESSAGE =
   "For your final puzzle... in a whiskey's fabric den, it lays under the collaberation of two hearts recharging";
 
@@ -700,12 +738,15 @@ const Nav = ({ solvedCount, allFixed }) => (
         <a href="#home" className={`font-semibold tracking-tight ${allFixed ? "" : "translate-y-0.5"}`}>
           E ❤ K
         </a>
-        <nav className={`hidden gap-6 text-sm sm:flex ${solvedCount >= 1 ? "" : "opacity-65"}`}>
+        <nav className={`hidden gap-6 text-sm sm:flex ${solvedCount >= 2 ? "" : "opacity-65"}`}>
+          <a className="hover:opacity-70" href="#logs">
+            {solvedCount >= 2 ? "Logs" : scrambleText("Logs")}
+          </a>
           <a className="hover:opacity-70" href="#timeline">
-            {solvedCount >= 2 ? "Timeline" : scrambleText("Timeline")}
+            {solvedCount >= 3 ? "Timeline" : scrambleText("Timeline")}
           </a>
           <a className="hover:opacity-70" href="#gallery">
-            {solvedCount >= 3 ? "Gallery" : scrambleText("Gallery")}
+            {solvedCount >= 4 ? "Gallery" : scrambleText("Gallery")}
           </a>
           <a className="hover:opacity-70" href="#about">
             {solvedCount >= 4 ? "About" : scrambleText("About")}
@@ -1189,8 +1230,78 @@ const PuzzleModal = ({
   );
 };
 
-const Timeline = ({ solvedCount, onOpenPuzzle }) => {
+const LogsIndex = ({ solvedCount, onOpenPuzzle }) => {
   const fixed = solvedCount >= 2;
+
+  return (
+    <Section
+      id="logs"
+      title={fixed ? "Logs" : scrambleText("Logs")}
+      subtitle={fixed ? "Short letters and memories." : scrambleText("These memories are still drifting around.")}
+      className={fixed ? "" : "rotate-[1deg]"}
+    >
+      {!fixed ? (
+        <button
+          type="button"
+          onClick={() => onOpenPuzzle("crossword")}
+          className="mb-5 rounded-full border-2 border-dashed border-neutral-900 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:rotate-[-1deg]"
+        >
+          Repair the logs
+        </button>
+      ) : null}
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <Tag>{fixed ? "firsts" : "???"}</Tag>
+        <Tag>{fixed ? "everyday" : "???"}</Tag>
+        <Tag>{fixed ? "trip" : "???"}</Tag>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        {logs.map((log, index) => (
+          <Card
+            key={log.slug}
+            className={`transition-all duration-700 ${
+              fixed
+                ? ""
+                : index % 2 === 0
+                  ? "-rotate-3 translate-y-4 blur-[1px]"
+                  : "rotate-3 -translate-y-2 blur-[1px]"
+            }`}
+          >
+            <div className="grid gap-3">
+              <PlacePhoto src={log.heroImage} alt={log.title} className={fixed ? "" : "border-dashed"} />
+              <div className="flex items-center justify-between text-sm text-neutral-600">
+                <span>{fixed ? log.date : "20??-??-??"}</span>
+                <span>{fixed ? log.location : scrambleText(log.location)}</span>
+              </div>
+              <h3 className="text-lg font-semibold">{fixed ? log.title : scrambleText(log.title)}</h3>
+              <p className="text-sm text-neutral-700">{fixed ? log.excerpt : scrambleText(log.excerpt)}</p>
+              <div className="flex gap-2">
+                {log.tags.map((tag) => (
+                  <Tag key={tag}>{fixed ? tag : "???"}</Tag>
+                ))}
+              </div>
+              <details className="group mt-2">
+                <summary className="cursor-pointer select-none text-sm underline decoration-neutral-300 hover:decoration-neutral-700">
+                  {fixed ? "Open log" : scrambleText("Open log")}
+                </summary>
+                <div className="mt-3 space-y-3">
+                  {log.body.map((paragraph, paragraphIndex) => (
+                    <p key={paragraphIndex} className="text-sm leading-relaxed text-neutral-800">
+                      {fixed ? paragraph : scrambleText(paragraph)}
+                    </p>
+                  ))}
+                </div>
+              </details>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  );
+};
+
+const Timeline = ({ solvedCount, onOpenPuzzle }) => {
+  const fixed = solvedCount >= 3;
 
   return (
     <Section
@@ -1257,7 +1368,7 @@ const Timeline = ({ solvedCount, onOpenPuzzle }) => {
 };
 
 const Gallery = ({ solvedCount, onOpenPuzzle }) => {
-  const fixed = solvedCount >= 3;
+  const fixed = solvedCount >= 4;
   const [everydayPhotos] = useState(() => shuffleArray(albums[0].photos));
   const displayAlbums = [
     { ...albums[0], photos: everydayPhotos },
@@ -1310,7 +1421,7 @@ const Gallery = ({ solvedCount, onOpenPuzzle }) => {
   );
 };
 
-const About = ({ solvedCount, onOpenPuzzle }) => {
+const About = ({ solvedCount }) => {
   const fixed = solvedCount >= 4;
 
   return (
@@ -1319,15 +1430,6 @@ const About = ({ solvedCount, onOpenPuzzle }) => {
       title={fixed ? "About us" : scrambleText("About us")}
       subtitle={fixed ? "A little overview." : scrambleText("Final note still encrypted.")}
     >
-      {!fixed ? (
-        <button
-          type="button"
-          onClick={() => onOpenPuzzle("crossword")}
-          className="mb-5 rounded-full border-2 border-dashed border-neutral-900 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 hover:rotate-[-1deg]"
-        >
-          Repair the final note
-        </button>
-      ) : null}
       <Card className={fixed ? "" : "rotate-[1deg] border-dashed"}>
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="sm:col-span-2">
@@ -1648,9 +1750,10 @@ export default function AnniversarySite() {
       {allFixed ? <FinalUnlock onOpenFinalPage={() => setView("final")} /> : null}
       <Nav solvedCount={solvedCount} allFixed={allFixed} />
       <Hero solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
+      <LogsIndex solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
       <Timeline solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
       <Gallery solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
-      <About solvedCount={solvedCount} onOpenPuzzle={setActivePuzzleId} />
+      <About solvedCount={solvedCount} />
       <Footer solvedCount={solvedCount} />
     </div>
   );
